@@ -3,13 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/chat-component.es.js",
+      "require": "./dist/chat-component.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "main": "./dist/chat-component.umd.js",
+  "module": "./dist/chat-component.es.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint chat-component --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -19,10 +32,36 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.1",
+    "vite-plugin-linter": "^2.0.7",
+    "vite-tsconfig-paths": "^4.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ialinaderi/chat-component"
+  },
+  "keywords": [],
+  "author": "bigyan poudel",
+  "bugs": {
+    "url": "https://github.com/ialinaderi/chat-component/issues"
+  },
+  "homepage": "https://github.com/ialinaderi/chat-component#readme",
+  "license": "MIT",
+  "dependencies": {
+    "@icon-park/react": "^1.4.2",
+    "antd": "^5.13.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-intersection-observer": "^9.5.3",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "wavesurfer.js": "^7.6.4"
   }
 }
