@@ -1,3 +1,15 @@
-@tailwind base;
+/*@tailwind base;*/
 @tailwind components;
 @tailwind utilities;
+
+.epr_-7cpnmu * {
+    font-family: IRANSansX !important;
+}
+
+.epr-header {
+    display: none !important;
+}
+
+h2.epr-emoji-category-label {
+    background-color: rgba(249, 250, 251, 0.8);
+}
