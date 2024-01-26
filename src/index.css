@@ -13,3 +13,7 @@
 h2.epr-emoji-category-label {
     background-color: rgba(249, 250, 251, 0.8);
 }
+
+[data-library=chat-component] .infinite-scroll-component__outerdiv{
+    width: 100%;
+}

@@ -47,7 +47,7 @@ export const Chat = (props: ChatProps) => {
         next={fetchNextPage}
         hasMore={hasNextPage || false}
         loader={
-          <span className={" flex w-full justify-center"}>
+          <span className={"flex w-full justify-center"}>
             <LoadingOne className={"animate-spin text-primary"} size={30} />
           </span>
         }

@@ -143,7 +143,6 @@ export const InputBar = forwardRef(
       if (wantSelect === undefined) return;
       const ta = inputRef.current?.resizableTextArea.textArea;
       if (ta) {
-        console.log(wantSelect);
         ta.selectionEnd = wantSelect;
       }
     }, [value]);
@@ -164,7 +163,6 @@ export const InputBar = forwardRef(
           const start = ta.selectionStart;
           const end = ta.selectionEnd;
           const text = ta.value;
-          console.log({ start, end, text });
           handleOnChange(
             text.substring(0, start) + emoji + text.substring(end),
             start + emoji.length,
