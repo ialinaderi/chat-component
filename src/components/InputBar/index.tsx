@@ -101,11 +101,6 @@ export const InputBar = forwardRef(
       },
     });
 
-    useImperativeHandle(ref, () => ({
-      setOpenEmojis,
-      setOpenButtons,
-    }));
-
     function setOpenEmojis(open: boolean) {
       setIsOpenEmojis(open);
       if (isOpenButtons) setIsOpenButtons(false);
@@ -115,6 +110,11 @@ export const InputBar = forwardRef(
       setIsOpenButtons(open);
       if (isOpenEmojis) setIsOpenEmojis(false);
     }
+
+    useImperativeHandle(ref, () => ({
+      setOpenEmojis,
+      setOpenButtons,
+    }));
 
     const handleSendMessage = useCallback(
       (value?: string) => {
@@ -404,7 +404,7 @@ export const InputBar = forwardRef(
                   height: "auto",
                 }}
                 exit={{ height: 0 }}
-                className={"bg-gray-50 max-h-60 overflow-y-auto border-t"}
+                className={`bg-gray-50 max-h-60 overflow-y-auto border-t hide-scrollbar`}
               >
                 {!!buttons?.length && (
                   <div className={`m-4 flex flex-col gap-2`}>

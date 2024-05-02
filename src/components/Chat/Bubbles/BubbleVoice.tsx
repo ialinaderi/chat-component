@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Slider } from "antd";
 import { Pause, PlayOne } from "@icon-park/react";
-import { formatTime } from "../../utils";
+import { formatTime } from "../../../utils";
 
 function LinkRenderer(props: any) {
   return (
@@ -19,7 +19,7 @@ function LinkRenderer(props: any) {
 }
 
 function BubbleVoice(props: {
-  message: string;
+  message?: string;
   voiceSrc: string;
   footer: ReactNode;
 }) {

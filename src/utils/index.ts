@@ -1,4 +1,4 @@
-import { Message } from "../types/Chat";
+import { MessageEntity, MessageEntityWithStatus } from "../types/Chat";
 
 export function formatTime(time: number) {
   return [
@@ -29,11 +29,11 @@ export function formatTimeMs(duration: number) {
     .padStart(2, "0")}.${milliseconds.toString().padStart(1, "0")}`;
 }
 
-export function groupMessagesByDate(messages: Message[]) {
-  const groupedMessages: { [date: string]: Message[] } = {};
+export function groupMessagesByDate(messages: MessageEntityWithStatus[]) {
+  const groupedMessages: { [date: string]: MessageEntityWithStatus[] } = {};
 
   messages.forEach((message) => {
-    const date = new Date(message.sent_at || "").toLocaleDateString();
+    const date = new Date(message.createdAt || "").toLocaleDateString();
     if (!groupedMessages[date]) {
       groupedMessages[date] = [];
     }
@@ -47,15 +47,22 @@ export function groupMessagesByDate(messages: Message[]) {
 }
 
 export function timeConvert24to12(time: string) {
-  // Check correct time format and split into components
   const splintedTime = time.split(":");
-  const hours =
-    parseInt(splintedTime[0]) >= 12
-      ? parseInt(splintedTime[0]) - 12
-      : parseInt(splintedTime[0]);
+  let hours = parseInt(splintedTime[0]);
   const minutes = splintedTime[1];
-  const amOrPm = parseInt(splintedTime[0]) >= 12 ? "PM" : "AM";
-  return `${hours.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")} ${amOrPm}`; // return adjusted time or original string
+  const amOrPm = hours >= 12 ? "PM" : "AM";
+  hours = hours > 12 ? hours - 12 : hours === 12 ? 12 : hours;
+  return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${amOrPm}`;
+}
+
+export function getTextColorFromBackground(rgb: string) {
+  const rgbValues = rgb.substring(4, rgb.length - 1).split(",");
+  const [r, g, b] = rgbValues.map((value) => parseInt(value.trim()));
+  const averageColor = (r + g + b) / 3;
+  const threshold = 127;
+  if (averageColor < threshold) {
+    return "#ffffff";
+  } else {
+    return "#000000";
+  }
 }

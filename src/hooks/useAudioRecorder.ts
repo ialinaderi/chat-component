@@ -41,6 +41,7 @@ const useAudioRecorder = (
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: false }) // Mute the audio
         .then((stream) => {
+          handleStart();
           const mediaRecorderInstance = new MediaRecorder(stream);
           mediaRecorderRef.current = mediaRecorderInstance;
 
@@ -106,7 +107,6 @@ const useAudioRecorder = (
 
   const startRecording = useCallback(() => {
     setIsRecording(true);
-    handleStart();
   }, []);
   const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current) {
