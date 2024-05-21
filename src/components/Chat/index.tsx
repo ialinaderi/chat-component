@@ -73,7 +73,7 @@ export const Chat = forwardRef((props: ChatProps, ref: Ref<ChatRef>) => {
     hasNextPage,
     onSeenMessage,
     showIsYouProfile = true,
-    hideScrollbar = true,
+    hideScrollbar = false,
     buttons = [],
     onClickButton,
   } = props;
@@ -115,7 +115,7 @@ export const Chat = forwardRef((props: ChatProps, ref: Ref<ChatRef>) => {
         data-library={"chat-component"}
         id={"chatScroll"}
         ref={chatScrollRef}
-        className={`flex flex-1 flex-col-reverse gap-1 md:overflow-y-scroll${
+        className={`flex flex-1 flex-col-reverse overflow-y-auto gap-1 md:overflow-y-scroll${
           isLoading && " overflow-y-hidden"
         }${hideScrollbar ? " hide-scrollbar" : ""}`}
       >
@@ -131,23 +131,10 @@ export const Chat = forwardRef((props: ChatProps, ref: Ref<ChatRef>) => {
               </span>
             }
             scrollThreshold={500}
-            className={
-              "flex !h-full flex-1 flex-col-reverse gap-3 !overflow-visible p-2"
-            }
+            className={"flex !h-full flex-1 flex-col-reverse gap-3 p-2"}
             style={{ display: "flex", flexDirection: "column-reverse" }}
             inverse={true}
           >
-            {typing && (
-              <BubbleTyping
-                name={typing.name || ""}
-                profilePath={
-                  typing.profilePath
-                    ? props.fileBaseURL + typing.profilePath
-                    : undefined
-                }
-                message={"درحال تایپ ..."}
-              />
-            )}
             {!!buttons.length && (
               <div className={"flex flex-wrap gap-2"}>
                 {buttons.map((value) => (
@@ -161,6 +148,18 @@ export const Chat = forwardRef((props: ChatProps, ref: Ref<ChatRef>) => {
                   </button>
                 ))}
               </div>
+            )}
+
+            {typing && (
+              <BubbleTyping
+                name={typing.name || ""}
+                profilePath={
+                  typing.profilePath
+                    ? props.fileBaseURL + typing.profilePath
+                    : undefined
+                }
+                message={"درحال تایپ ..."}
+              />
             )}
             {groupedMessages.map((group, groupIndex) => (
               <div className={"flex flex-col-reverse gap-1"} key={groupIndex}>

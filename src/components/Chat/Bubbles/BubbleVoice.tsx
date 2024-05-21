@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import { Slider } from "antd";
 import { Pause, PlayOne } from "@icon-park/react";
 import { formatTime } from "../../../utils";
+import { components } from "./config";
 
 function LinkRenderer(props: any) {
   return (
@@ -103,11 +104,11 @@ function BubbleVoice(props: {
           // }
           preload="auto"
         />
-        <p className={"whitespace-pre-line text-sm"} dir={"auto"}>
+        <p className={"whitespace-pre-line break-words text-sm"} dir={"auto"}>
           {props.message && (
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{ a: LinkRenderer }}
+              components={{ ...components, a: LinkRenderer }}
             >
               {props.message}
             </ReactMarkdown>
@@ -118,5 +119,6 @@ function BubbleVoice(props: {
     </div>
   );
 }
-
+const text =
+  'بله، البته. در ادامه یک مثال از استفاده از دستورات `join` و `split` در پایتون را برای شما آورده‌ام:\n\n### مثال استفاده از `join`:\n```python\n# تعریف یک لیست از رشته‌ها\nwords = ["Hello", "World", "CS50"]\n\n# ادغام اعضای لیست با استفاده از فاصله به عنوان جداکننده\nsentence = " ".join(words)\n\n# چاپ کردن جمله ادغام شده\nprint(sentence)\n```\n\nدر این مثال، ابتدا یک لیست از رشته‌ها تعریف شده است. سپس با استفاده از دستور `join`، این رشته‌ها با استفاده از فاصله به عنوان جداکننده، به یک رشته واحد ادغام می‌شوند و در متغیر `sentence` ذخیره می‌شوند.\n\n### مثال استفاده از `split`:\n```python\n# تعریف یک رشته\nsentence = "Hello, World, CS50"\n\n# تقسیم رشته بر اساس ویرگول و فاصله\nwords = sentence.split(", ")\n\n# چاپ کردن لیست کلمات حاصل از تقسیم رشته\nprint(words)\n```\n\nدر این مثال، یک رشته تعریف شده است و سپس با استفاده از دستور `split`، رشته بر اساس ویرگول و فاصله تقسیم شده و نتیجه در یک لیست از کلمات ذخیره می‌شود.\n\nبا اجرای این دو مثال، می‌توانید عملکرد دقیق این دستورات را در پایتون مشاهده کنید.';
 export default BubbleVoice;

@@ -12,6 +12,7 @@ import {
   ZoomOutOutlined,
 } from "@ant-design/icons";
 import { LoadingOne } from "@icon-park/react";
+import { components } from "./config";
 
 interface imageModalType {
   isActive: boolean;
@@ -126,7 +127,7 @@ const BubbleImage = (props: {
           <p className={"whitespace-pre-line p-1 pt-2 text-sm"} dir={"auto"}>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{ a: LinkRenderer }}
+              components={{ ...components, a: LinkRenderer }}
             >
               {props.message}
             </ReactMarkdown>

@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { DownloadTwo } from "@icon-park/react";
 import { formatBytes } from "../../../utils";
+import { components } from "./config";
 
 function LinkRenderer(props: any) {
   return (
@@ -62,11 +63,11 @@ function BubbleDocument(props: {
             </span>
           </div>
         </div>
-        <p className={"whitespace-pre-line text-sm"} dir={"auto"}>
+        <p className={"whitespace-pre-line break-words text-sm"} dir={"auto"}>
           {props.message && (
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{ a: LinkRenderer }}
+              components={{ ...components, a: LinkRenderer }}
             >
               {props.message}
             </ReactMarkdown>

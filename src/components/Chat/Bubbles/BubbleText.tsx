@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { components } from "./config";
 
 export function LinkRenderer(props: any) {
   return (
@@ -24,10 +25,10 @@ function BubbleText(props: {
     <div>
       <div className={"px-3 pt-0.5"}>{props.header}</div>
       <div className={"px-3 pt-0.5"}>
-        <p className={"whitespace-pre-line text-sm"} dir={"auto"}>
+        <p className={"whitespace-pre-line break-words text-sm"} dir={"auto"}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            components={{ a: LinkRenderer }}
+            components={{ ...components, a: LinkRenderer }}
           >
             {props.message}
           </ReactMarkdown>

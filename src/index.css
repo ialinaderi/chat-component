@@ -63,3 +63,20 @@ h2.epr-emoji-category-label {
     display: none;
     /* for Chrome, Safari, and Opera */
 }
+
+
+div[data-is-you="true"] a {
+    @apply !text-white
+}
+
+pre::-webkit-scrollbar {
+    height: .5rem;
+    width: .5rem;
+}
+pre::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 100%, .2);
+}
+pre::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 9999px;
+}

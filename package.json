@@ -1,7 +1,7 @@
 {
   "name": "@isalinaderi/chat-component",
   "private": false,
-  "version": "0.1.12",
+  "version": "0.1.14",
   "type": "module",
   "files": [
     "dist"
@@ -63,6 +63,7 @@
     "antd": "^5.13.1",
     "emoji-picker-react": "^4.6.13",
     "framer-motion": "^10.18.0",
+    "highlight.js": "^11.9.0",
     "prettier": "^3.2.4",
     "react-infinite-scroll-component": "^6.1.0",
     "react-intersection-observer": "^9.5.3",

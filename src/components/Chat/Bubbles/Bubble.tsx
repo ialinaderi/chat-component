@@ -202,6 +202,7 @@ const Bubble = forwardRef(
             backgroundColor: isYou ? theme.messageColor : "rgb(243, 244, 246)",
             color: isYou ? "white" : "black",
           }}
+          data-is-you={isYou}
           ref={ref}
         >
           {messageContent}
